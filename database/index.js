@@ -5,7 +5,7 @@ const db = mysql.createConnection(mysqlConfig);
 
 
 const getAllPhotos = (id) => {
-  let queryStr = 'select * from products where product_id=?;'
+  let queryStr = 'select photo_urls from products where product_id=?;'
   let params = id;
   return new Promise((resolve, reject) => {
     db.query(queryStr, params, (err, data) => {
