@@ -10,10 +10,9 @@ app.use(express.static('./client/dist'));
 
 // get request at specific end point
 app.get('/:product_id', (req, res) => {
-  // console.log(req.params.product_id);
   const id = req.params.product_id;
   db.getAllPhotos(id)
-    .then(urls => res.send(urls))
+    .then(urls => res.send(urls).end())
     .catch(err => console.log(err));
 });
 
