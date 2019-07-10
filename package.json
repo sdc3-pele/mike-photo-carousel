@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start:dev": "nodemon server/index.js -w server -w database-mysql",
     "react-dev": "webpack -d --watch",
     "seed": "node database/seed.js",
@@ -39,6 +39,7 @@
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.2",
+    "jest": "^24.8.0",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5"
   }
