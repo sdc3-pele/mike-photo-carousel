@@ -21,7 +21,7 @@ class Photos extends React.Component {
           photos: urls,
         });
       })
-      .catch(err => console.log('failed to get URLs'));
+      .catch(() => console.log('failed to get URLs'));
   }
 
 
@@ -33,9 +33,12 @@ class Photos extends React.Component {
     // const urls = this.state.photos[0].photo_urls
     return (
       <div className="photos">
-        <h1>test</h1>
-        {photoArr.map(image => <Image image={image} />)}
-        {/* <div>{this.state.photos[0]}</div> */}
+        <div className="thumbnailPhotos">
+          {photoArr.map(image => <Image myClass={'thumbnailImages'} image={image} />)}
+        </div>
+        <div className="mainPhotos">
+          {photoArr.map(image => <Image myClass={'bigImages'} image={image} />)}
+        </div>
       </div>
     );
   }

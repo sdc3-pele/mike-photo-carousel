@@ -1,0 +1,14 @@
+.photos {
+  display: flex;
+  /* margin: auto; */
+  width: 50vw;
+}
+
+.thumbnailImages {
+  height: auto;
+  width: 30%;
+}
+
+.bigImages {
+  width: 90%
+}
