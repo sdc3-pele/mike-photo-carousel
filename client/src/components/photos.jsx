@@ -1,5 +1,8 @@
 import React from 'react';
-import Image from './image.jsx';
+import MainImage from './mainimage.jsx';
+import ThumbnailImage from './thumbnailimage.jsx';
+// import ScrollView, { ScrollElement } from './scroll.jsx';
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 const fetch = require('node-fetch');
 
@@ -10,6 +13,10 @@ class Photos extends React.Component {
       photos: [],
     };
   }
+
+  // scrollTo = (name) => {
+  //   this._scroller.scrollTo(name);
+  // }
 
   componentDidMount() {
     const id = window.location.pathname.substring(1);
@@ -34,10 +41,10 @@ class Photos extends React.Component {
     return (
       <div className="photos">
         <div className="thumbnailPhotos">
-          {photoArr.map(image => <Image myClass={'thumbnailImages'} image={image} />)}
+          {photoArr.map(image => <ThumbnailImage image={image} />)}
         </div>
         <div className="mainPhotos">
-          {photoArr.map(image => <Image myClass={'bigImages'} image={image} />)}
+          {photoArr.map(image => <MainImage image={image} />)}
         </div>
       </div>
     );
