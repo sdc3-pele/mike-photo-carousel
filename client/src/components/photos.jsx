@@ -2,7 +2,6 @@ import React from 'react';
 import MainImage from './mainimage.jsx';
 import ThumbnailImage from './thumbnailimage.jsx';
 // import ScrollView, { ScrollElement } from './scroll.jsx';
-import { Link, animateScroll as scroll } from 'react-scroll';
 
 const fetch = require('node-fetch');
 
@@ -13,10 +12,6 @@ class Photos extends React.Component {
       photos: [],
     };
   }
-
-  // scrollTo = (name) => {
-  //   this._scroller.scrollTo(name);
-  // }
 
   componentDidMount() {
     const id = window.location.pathname.substring(1);
@@ -31,7 +26,6 @@ class Photos extends React.Component {
       .catch(() => console.log('failed to get URLs'));
   }
 
-
   render() {
     // console.log(this.state.photos)
     const photoArr = this.state.photos;
@@ -39,13 +33,9 @@ class Photos extends React.Component {
     // console.log(this.state)
     // const urls = this.state.photos[0].photo_urls
     return (
-      <div className="photos">
-        <div className="thumbnailPhotos">
+      <div className="photoContainer">
           {photoArr.map(image => <ThumbnailImage image={image} />)}
-        </div>
-        <div className="mainPhotos">
           {photoArr.map(image => <MainImage image={image} />)}
-        </div>
       </div>
     );
   }

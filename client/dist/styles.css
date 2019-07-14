@@ -1,14 +1,27 @@
-.photos {
+.photoContainer {
   display: flex;
-  /* margin: auto; */
-  width: 50vw;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbnailContainer {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+}
+
+.mainImages {
+  height: 500px;
+  width: auto;
 }
 
 .thumbnailImages {
   height: auto;
-  width: 30%;
-}
-
-.bigImages {
-  width: 90%
+  width: 100px;
+  margin: auto;
 }
