@@ -1,24 +1,28 @@
 import React from 'react';
-import { Link } from 'react-scroll';
 
-const ThumbnailImage = ({ image }) => {
+const ThumbnailImage = ({ image, setCurrentPhoto, currentPhoto }) => {
   const images = JSON.parse(image.photo_urls);
-  // console.log(Array.isArray(image))
+
   return (
     <div className="thumbnailContainer">
       {images.map((url) => {
+        const text = React.createRef();
+        function handleClick() {
+          const mainPic = document.getElementById(`${text.current.src}`);
+          mainPic.scrollIntoView({
+            behavior: 'smooth',
+          });
+        }
         return (
           <div>
-            <Link
-              activeClass="active"
-              to={url}
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={300}
-            >
-              <img className="thumbnailImages" src={url}></img>
-            </Link>
+            <img className="thumbnailImages"
+              src={url}
+              ref={text}
+              onClick={(e) => {
+                handleClick(e);
+                setCurrentPhoto(text.current.src)
+              }}>
+            </img>
           </div>
         );
       })}
