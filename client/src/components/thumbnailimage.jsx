@@ -44,9 +44,9 @@ const ThumbnailImage = ({ image, setCurrentPhoto, currentPhoto }) => {
               ref={thumbnailPic}
               onClick={(e) => {
                 handleClick(e);
-                setCurrentPhoto(thumbnailPic.current.src)
-              }}>
-            </Selected>
+                setCurrentPhoto(thumbnailPic.current.src);
+              }}
+            />
           );
         }
         return (
@@ -57,7 +57,7 @@ const ThumbnailImage = ({ image, setCurrentPhoto, currentPhoto }) => {
               handleClick(e);
               setCurrentPhoto(thumbnailPic.current.src);
             }}
-          ></ThumbNailImages>
+          />
         );
       })}
     </ThumbnailContainer>

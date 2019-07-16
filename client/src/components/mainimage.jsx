@@ -12,11 +12,11 @@ const MainImages = styled.img`
 `;
 
 class MainImage extends React.Component {
-  componentDidMount(props) {
+  componentDidMount() {
     const props1 = this.props;
-    const callback = function(entries) {
+    const callback = function (entries) {
       entries.forEach((entry) => {
-        if (entry.intersectionRatio === 1.0 && props1.currentPhoto !== entry.target.src && entry.isIntersecting) {
+        if (entry.intersectionRatio === 1.0) {
           props1.setCurrentPhoto(entry.target.src);
         }
       });
@@ -37,11 +37,13 @@ class MainImage extends React.Component {
   }
 
   render() {
-    const images = JSON.parse(this.props.image.photo_urls);
+    // const images = JSON.parse(this.props.image.photo_urls);
+
+    const { photo_urls } = this.props.image;
 
     return (
       <MainContainer>
-        {images.map((url) => <div><MainImages className="mainImages" id={url} src={url} ></MainImages></div>)}
+        {JSON.parse(photo_urls).map(url => <div><MainImages className="mainImages" id={url} src={url} /></div>)}
       </MainContainer>
     );
   }

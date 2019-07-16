@@ -1,7 +1,7 @@
 import React from 'react';
+import styled from 'styled-components';
 import MainImage from './mainimage.jsx';
 import ThumbnailImage from './thumbnailimage.jsx';
-import styled from 'styled-components';
 
 const fetch = require('node-fetch');
 
@@ -45,11 +45,24 @@ class Photos extends React.Component {
   */
 
   render() {
-    const photoArr = this.state.photos;
+    // const photoArr = this.state.photos;
+    const { photos, currentPhoto } = this.state;
     return (
       <PhotoContainer>
-        {photoArr.map(image => <ThumbnailImage image={image} setCurrentPhoto={this.setCurrentPhoto} currentPhoto={this.state.currentPhoto} />)}
-        {photoArr.map(image => <MainImage image={image} setCurrentPhoto={this.setCurrentPhoto} currentPhoto={this.state.currentPhoto} />)}
+        {photos.map(image => (
+          <ThumbnailImage
+            image={image}
+            setCurrentPhoto={this.setCurrentPhoto}
+            currentPhoto={currentPhoto}
+          />
+        ))}
+        {photos.map(image => (
+          <MainImage
+            image={image}
+            setCurrentPhoto={this.setCurrentPhoto}
+            currentPhoto={currentPhoto}
+          />
+        ))}
       </PhotoContainer>
     );
   }
