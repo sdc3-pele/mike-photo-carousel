@@ -1,15 +1,12 @@
 const express = require('express');
-// const bodyParser = require('body-parser');
 
 const app = express();
 const port = 3001;
 const db = require('../database/index.js');
 
-// app.use(bodyParser.json());
-app.use(express.static('./client/dist'));
+app.use('/:product_id', express.static('./client/dist'));
 
-// get request at specific end point
-app.get('/:product_id', (req, res) => {
+app.get('/api/:product_id', (req, res) => {
   const id = req.params.product_id;
   db.getAllPhotos(id)
     .then(urls => res.send(urls).end())
