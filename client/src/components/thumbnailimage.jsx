@@ -42,8 +42,8 @@ const ThumbnailImage = ({ image, setCurrentPhoto, currentPhoto }) => {
             <Selected
               src={url}
               ref={thumbnailPic}
-              onClick={(e) => {
-                handleClick(e);
+              onClick={() => {
+                handleClick();
                 setCurrentPhoto(thumbnailPic.current.src);
               }}
             />
@@ -53,8 +53,8 @@ const ThumbnailImage = ({ image, setCurrentPhoto, currentPhoto }) => {
           <ThumbNailImages
             src={url}
             ref={thumbnailPic}
-            onClick={(e) => {
-              handleClick(e);
+            onClick={() => {
+              handleClick();
               setCurrentPhoto(thumbnailPic.current.src);
             }}
           />
