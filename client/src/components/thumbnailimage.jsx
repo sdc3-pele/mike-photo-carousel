@@ -30,7 +30,7 @@ const ThumbnailImage = ({ image, setCurrentPhoto, currentPhoto }) => {
     <ThumbnailContainer>
       {images.map((url) => {
         const thumbnailPic = React.createRef();
-        // console.log(thumbnailPic)
+
         function handleClick() {
           const mainPic = document.getElementById(`${thumbnailPic.current.src}`);
           mainPic.scrollIntoView({
