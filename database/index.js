@@ -5,8 +5,8 @@ const db = mysql.createConnection(mysqlConfig);
 
 
 const getAllPhotos = (id) => {
-  let queryStr = 'select photo_urls from products where product_id=?;'
-  let params = id;
+  const queryStr = 'select photo_urls from products where product_id=?;';
+  const params = id;
   return new Promise((resolve, reject) => {
     db.query(queryStr, params, (err, data) => {
       if (err) {
@@ -16,6 +16,6 @@ const getAllPhotos = (id) => {
       }
     });
   });
-}
+};
 
-module.exports = {getAllPhotos};
+module.exports = { getAllPhotos };
