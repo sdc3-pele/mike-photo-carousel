@@ -21,7 +21,7 @@ class Photos extends React.Component {
 
   componentDidMount() {
     const id = window.location.pathname.substring(1);
-    fetch(`/api/${id}`)
+    fetch(`/api/photos/${id}`)
       .then(res => res.json())
       .then((urls) => {
         this.setState({
