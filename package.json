@@ -7,8 +7,7 @@
     "test": "jest",
     "start:dev": "nodemon server/index.js -w server -w database-mysql",
     "react-dev": "webpack -d --watch",
-    "seed": "node database/seed.js",
-    "reset-db": "mysql -u root -p < database/schema.sql"
+    "seed": "mysql -u root < database/schema.sql && node database/seed.js"
   },
   "repository": {
     "type": "git",
