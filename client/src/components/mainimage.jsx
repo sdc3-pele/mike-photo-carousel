@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-right: 50px;
 `;
 
 const MainImages = styled.img`

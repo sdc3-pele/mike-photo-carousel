@@ -5,7 +5,7 @@ const ThumbnailContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: sticky;
-  top: 10%;
+  top: 1%;
   align-self: flex-start;
 `;
 
@@ -35,6 +35,7 @@ const ThumbnailImage = ({ image, setCurrentPhoto, currentPhoto }) => {
           const mainPic = document.getElementById(`${thumbnailPic.current.src}`);
           mainPic.scrollIntoView({
             behavior: 'smooth',
+            block: 'center'
           });
         }
         if (currentPhoto === url) {
