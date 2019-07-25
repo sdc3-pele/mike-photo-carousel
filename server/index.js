@@ -13,6 +13,7 @@ app.get('/api/photos/:id', (req, res) => {
     .catch(err => console.log(err));
 });
 
+
 app.post('/api/photos', (req, res) => {
   // db post function
 });
