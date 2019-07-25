@@ -19,6 +19,7 @@ Run in the different terminal windows within the root directory:
 - "npm run seed"
 - "npm run start:dev"
 - "npm run react:dev"
+ß
 
 ## Api
 GET /api/photos/:id
