@@ -1,19 +1,21 @@
-const cassandra = require('cassandra-driver');
-const client = new cassandra.Client({ contactPoints: ['h1', 'h2'], localDataCenter: 'datacenter1', keyspace: 'ks1' });
+const mysql = require('mysql');
+const mysqlConfig = require('./config.js');
 
-console.log('test');
-
-
+const db = mysql.createConnection(mysqlConfig);
 
 
-const getAllPhotos = (x) =>{
-  //const queryStr = 'select photo_urls from products where product_id=?;';
-  //const params = id;
+const getAllPhotos = (id) => {
+  const queryStr = 'select photo_urls from products where product_id=?;';
+  const params = id;
   return new Promise((resolve, reject) => {
-
-
+    db.query(queryStr, params, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
   });
-}
+};
 
-
-module.exports = {getAllPhotos} ;
+module.exports = { getAllPhotos };
