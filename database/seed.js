@@ -1,24 +1,22 @@
-// const mysql = require('mysql');
 const mockData = require('./mockData.js');
 const csv = require('fast-csv');
 const {performance} = require('perf_hooks')
-// const mysqlConfig = require('./config.js');
-
 const cassandra = require('cassandra-driver');
+
 const Client = cassandra.Client;
 const client = new Client({
   contactPoints: ['127.0.0.1'],
   localDataCenter: 'datacenter1',
 })
 const queryOptions = { prepare: true, consistency: cassandra.types.consistencies.one };
-
 const queries = [
   { query: 'INSERT INTO sdc_photos.photos_urls (id, urls) VALUES (?, ?)',
      params: [ '1','hendrix']}
 ];
+
 let query = 'DROP KEYSPACE IF EXISTS sdc_photos';
-var t1;
-var t0;
+let t1;
+let t0;
 client.execute(query)
 .then(()=>{
   t1 = performance.now();
