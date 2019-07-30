@@ -23,12 +23,13 @@ class Photos extends React.Component {
     const id = window.location.pathname.substring(1);
     fetch(`/api/photos/${id}`)
       .then(res => res.json())
-      .then((urls) => {
+      .then((res) => {
+        //console.log(res);
         this.setState({
-          photos: urls,
+          photos: res,
         });
       })
-      .catch(() => console.log('failed to get URLs'));
+      .catch((err) => console.log(err));//altered
   }
 
   setCurrentPhoto(url) {

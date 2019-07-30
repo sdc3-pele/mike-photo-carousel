@@ -24,7 +24,7 @@ const Selected = styled.img`
 `;
 
 const ThumbnailImage = ({ image, setCurrentPhoto, currentPhoto }) => {
-  const images = JSON.parse(image.photo_urls);
+  const images = JSON.parse(image.urls);
 
   return (
     <ThumbnailContainer>

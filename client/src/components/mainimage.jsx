@@ -40,11 +40,11 @@ class MainImage extends React.Component {
   }
 
   render() {
-    const { photo_urls } = this.props.image;
+    const { urls } = this.props.image;
 
     return (
       <MainContainer>
-        {JSON.parse(photo_urls).map(url => <MainImages className="mainImages" id={url} src={url} />)}
+        {JSON.parse(urls).map(url => <MainImages className="mainImages" id={url} src={url} />)}
       </MainContainer>
     );
   }
