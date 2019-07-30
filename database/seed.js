@@ -7,7 +7,7 @@ const Client = cassandra.Client;
 const client = new Client({
   contactPoints: ['127.0.0.1'],
   localDataCenter: 'datacenter1',
-})
+});
 const queryOptions = { prepare: true, consistency: cassandra.types.consistencies.one };
 const queries = [
   { query: 'INSERT INTO sdc_photos.photos_urls (id, urls) VALUES (?, ?)',
