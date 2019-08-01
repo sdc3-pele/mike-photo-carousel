@@ -21,6 +21,8 @@ Run in the different terminal windows within the root directory:
 - "npm run react:dev"
 ß
 
+//start postgress server "pg_ctl -D /usr/local/var/postgres start"  -> "psql SDC"
+
 ## Api
 GET /api/photos/:id
 get json object array of photo url for item with given id
