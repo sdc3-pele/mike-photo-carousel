@@ -33,16 +33,16 @@ if (fs.existsSync('data.csv')) {
 }
 
 fs.appendFileSync('data.csv', csv);
-fs.appendFileSync('data.csv', ',\n');
+fs.appendFileSync('data.csv', '\n');
 
 for (let x = 1; x <= fileSize; x++) {
   currentChunk.push({ url: getUrls() });
   if (x % chunkSize === 0) {
     csv = json2csv.parse(currentChunk, { header: false });
-    csvWithEndingCommas = csv.replace(/\n/g, ',\n');
+    csvWithEndingCommas = csv.replace(/\n/g, '\n');
     fs.appendFileSync('data.csv',  csvWithEndingCommas);
     console.log((x / chunkSize) + '% done!');
-    if (x !== fileSize) fs.appendFileSync('data.csv', ',\n');
+    if (x !== fileSize) fs.appendFileSync('data.csv', '\n');
     currentChunk = [];
   }
 }
