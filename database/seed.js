@@ -2,6 +2,7 @@ const mockData = require('./mockData.js');
 const csv = require('fast-csv');
 const {performance} = require('perf_hooks')
 const cassandra = require('cassandra-driver');
+const csvFile = 'data.csv'
 
 const Client = cassandra.Client;
 const client = new Client({
@@ -31,7 +32,7 @@ client.execute(query)
   let id = 1;
   let head = true;
   csv
-    .parseFile('data.csv')
+    .parseFile(csvFile)
     .on('error', error => console.error(error))
     .on('data', row => {
       if(head === false){
@@ -40,7 +41,7 @@ client.execute(query)
           params: [ id, row[0]]}
         );
         id++;
-        if(queries.length >= 100){
+        if(queries.length >= 100){ //100
           client.batch(queries, queryOptions)
           .then(()=>{
             if ((percent / 1000) % 1 === 0) {
