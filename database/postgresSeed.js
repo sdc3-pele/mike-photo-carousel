@@ -1,6 +1,15 @@
 const { Client } = require('pg')
 const client = new Client(
-  {database: 'SDC'}
+  //for local, just set database to SDC
+  {
+    user: 'power_user',
+    database: 'postgres',
+    password: '',
+    host: 'ec2-18-191-45-136.us-east-2.compute.amazonaws.com',
+    port: '5432',
+    //ssl: true
+
+  }
 )
 client.connect()
 
@@ -12,6 +21,10 @@ client.query(`CREATE TABLE urls (
   CONSTRAINT urls_pkey PRIMARY KEY (id)
 )`);
 
-client.query(`COPY urls(url) FROM '/Users/henrymattoon/classwork/course/SDC/mike-photo-carousel/data.csv' DELIMITER ',' CSV HEADER`,(err, res) => {
-  console.log(err, res);
-});
+
+//used SCP to load EC2 server
+// client.query(`COPY urls(url) FROM STDIN DELIMITER ',' CSV HEADER`,(err, res) => {
+//   console.log(err, res);
+// });
+
+//'/Users/henrymattoon/classwork/course/SDC/mike-photo-carousel/data.csv'
