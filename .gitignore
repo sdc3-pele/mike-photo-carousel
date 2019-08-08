@@ -2,5 +2,7 @@ node_modules
 config.js
 bundle.js
 data.csv
+datacopy.csv
 newrelic.js
 newrelic_agent.log
+
