@@ -23,9 +23,15 @@ const Selected = styled.img`
   opacity: 1;
 `;
 
-const ThumbnailImage = ({ image, setCurrentPhoto, currentPhoto }) => {
-  const images = JSON.parse(image.urls);
 
+
+
+const ThumbnailImage = ({ image, setCurrentPhoto, currentPhoto }) => {
+  let images = JSON.parse(image.url);
+  console.log(images)
+  images = images.map((urlId) => {
+    return `https://sdc3-pele.s3-us-west-1.amazonaws.com/photo${urlId}.jpeg`
+  });
   return (
     <ThumbnailContainer>
       {images.map((url) => {
