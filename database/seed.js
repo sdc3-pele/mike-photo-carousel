@@ -2,12 +2,13 @@ const mockData = require('./mockData.js');
 const csv = require('fast-csv');
 const {performance} = require('perf_hooks')
 const cassandra = require('cassandra-driver');
+const csvFile = 'data.csv'
 
 const Client = cassandra.Client;
 const client = new Client({
   contactPoints: ['127.0.0.1'],
   localDataCenter: 'datacenter1',
-})
+});
 const queryOptions = { prepare: true, consistency: cassandra.types.consistencies.one };
 const queries = [
   { query: 'INSERT INTO sdc_photos.photos_urls (id, urls) VALUES (?, ?)',
@@ -31,7 +32,7 @@ client.execute(query)
   let id = 1;
   let head = true;
   csv
-    .parseFile('data.csv')
+    .parseFile(csvFile)
     .on('error', error => console.error(error))
     .on('data', row => {
       if(head === false){
@@ -40,7 +41,7 @@ client.execute(query)
           params: [ id, row[0]]}
         );
         id++;
-        if(queries.length >= 100){
+        if(queries.length >= 100){ //100
           client.batch(queries, queryOptions)
           .then(()=>{
             if ((percent / 1000) % 1 === 0) {

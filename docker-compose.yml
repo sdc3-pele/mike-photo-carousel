@@ -1,0 +1,9 @@
+version: '3'
+services:
+  FeaturedFilm:
+    build:
+      context: .
+    image: carousel:latest
+    container_name: carousel
+    ports:
+    - "3001:3001"
