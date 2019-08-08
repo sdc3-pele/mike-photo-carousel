@@ -6,9 +6,9 @@
   "scripts": {
     "test": "jest",
     "start:dev": "nodemon server/index.js -w server -w database-mysql",
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
-    "seed": "mysql -u root < database/schema.sql && node database/seed.js",
+    "seed": "node database/postgresSeed.js",
     "dlimages": "node database/imageDownloader.js",
     "csv": "node database/cvsCreater.js"
   },
