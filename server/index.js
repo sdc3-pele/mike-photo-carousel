@@ -1,4 +1,4 @@
-require('newrelic');
+//require('newrelic');
 const express = require('express');
 
 //const {cassGetAll, cassPost, cassPut, cassDelete} = require('./controllers/photos.js');
@@ -11,10 +11,11 @@ const db = require('../database/index.js');
 app.use('/:id', express.static('./client/dist'));
 
 app.get('/api/photos/:id', (req, res) => {
+  //console.log('ping')
   const { id } = req.params;
   pgGetAll(id, (err, data) => {
     if(err) console.log(err);
-    console.log(data);
+    //console.log(data);
     res.send(data).end();
   });
 });
