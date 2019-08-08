@@ -22,6 +22,7 @@ Run in the different terminal windows within the root directory:
 ß
 
 //start postgress server "pg_ctl -D /usr/local/var/postgres start"  -> "psql SDC"
+//stress test: k6 run k6Test.js
 
 ## Api
 GET /api/photos/:id
