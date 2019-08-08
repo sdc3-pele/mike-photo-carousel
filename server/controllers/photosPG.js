@@ -1,6 +1,14 @@
 const { Client } = require('pg')
 const client = new Client(
-  {database: 'SDC'}
+  //for local, just set database to SDC
+  {
+    user: 'power_user',
+    database: 'postgres',
+    password: '',
+    host: 'ec2-18-191-45-136.us-east-2.compute.amazonaws.com',
+    port: '5432',
+    //ssl: true
+  }
 )
 client.connect()
 
@@ -10,12 +18,12 @@ exports.pgGetAll = (id, callBack) => {
   client.query(`SELECT url FROM urls WHERE id = ${id}`, (err, data) => {
     if(err) callBack(err, null);
     //console.log(data);
-    let parsedUrls = JSON.parse(data.rows[0].url);
-    //console.log('parsed urls is' + parsedUrls);
-    let expandedUrls = parsedUrls.map((urlId) => {
-      return `https://sdc3-pele.s3-us-west-1.amazonaws.com/photo${urlId}.jpeg`
-    });
-    data.rows[0].urls = JSON.stringify(expandedUrls);
+    // let parsedUrls = JSON.parse(data.rows[0].url);
+    // // //console.log('parsed urls is' + parsedUrls);
+    // let expandedUrls = parsedUrls.map((urlId) => {
+    //   return `https://sdc3-pele.s3-us-west-1.amazonaws.com/photo${urlId}.jpeg`
+    // });
+    // data.rows[0].urls = JSON.stringify(expandedUrls);
     //console.log(data.rows[0]);
     callBack(null, data.rows);
   });
